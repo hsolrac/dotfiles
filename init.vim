@@ -14,7 +14,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'f-person/git-blame.nvim'
-Plug 'akinsho/toggleterm.nvim'	
+Plug 'akinsho/toggleterm.nvim'
+Plug 'astashov/vim-ruby-debugger'
 call plug#end()
 
 colorscheme gruvbox
