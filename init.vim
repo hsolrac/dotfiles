@@ -13,13 +13,14 @@ Plug 'dense-analysis/ale'
 Plug 'sheerun/vim-polyglot'
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
+Plug 'APZelos/blamer.nvim'
 Plug 'f-person/git-blame.nvim'
 Plug 'akinsho/toggleterm.nvim'
-Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap' 
+Plug 'edluffy/hologram.nvim'
 call plug#end()
 
 colorscheme gruvbox
-set background=dark
 
 set hidden
 set number
@@ -27,7 +28,9 @@ set relativenumber
 set mouse=a
 set inccommand=split
 
-let g:gitblame_enabled = 0
+let g:gitblame_enabled = 1
+let g:blamer_delay = 500
+
 
 let mapleader="\<space>"
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
@@ -38,7 +41,10 @@ nnoremap <C-q> :qa<CR>
 nnoremap <F1> :bprevious<CR>
 nnoremap <F2> :bnext<CR>
 nnoremap <C-y> :tabnew<CR>
+nnoremap <C-x> :term<CR>
 vnoremap <C-c> "+y<CR>
+nnoremap <c-z> :bd<CR>
+nnoremap <C-r> :vsplit<CR>
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-a> :NERDTree<CR>
