@@ -14,10 +14,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'APZelos/blamer.nvim'
-Plug 'f-person/git-blame.nvim'
-Plug 'akinsho/toggleterm.nvim'
-Plug 'mfussenegger/nvim-dap' 
 Plug 'edluffy/hologram.nvim'
+Plug 'mfussenegger/nvim-dap' 
 call plug#end()
 
 colorscheme gruvbox
