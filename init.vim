@@ -20,6 +20,7 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'f-person/git-blame.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'aca/completion-tabnine', { 'do': './install.sh' }
 call plug#end()
 
 set termguicolors
@@ -28,7 +29,7 @@ require("bufferline").setup{}
 EOF
 
 colorscheme gruvbox
-
+ 
 set hidden
 set number
 set relativenumber
@@ -70,6 +71,5 @@ nnoremap <C-r> :vsplit<CR>
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-a> :NERDTree<CR>
 nnoremap <C-l> :NERDTreeFind<CR>
-
 
 
