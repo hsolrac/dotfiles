@@ -20,7 +20,7 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'f-person/git-blame.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'aca/completion-tabnine', { 'do': './install.sh' }
+Plug 'projekt0n/github-nvim-theme'
 call plug#end()
 
 set termguicolors
@@ -28,7 +28,7 @@ lua << EOF
 require("bufferline").setup{}
 EOF
 
-colorscheme gruvbox
+colorscheme github_dark_colorblind
  
 set hidden
 set number
