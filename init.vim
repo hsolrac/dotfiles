@@ -20,7 +20,9 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'f-person/git-blame.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'projekt0n/github-nvim-theme'
+Plug 'manasthakur/vim-commentor'
+Plug 'tomasiser/vim-code-dark'
+Plug 'vim-ruby/vim-ruby'
 call plug#end()
 
 set termguicolors
@@ -28,7 +30,7 @@ lua << EOF
 require("bufferline").setup{}
 EOF
 
-colorscheme github_dark_colorblind
+colorscheme codedark
  
 set hidden
 set number
@@ -38,6 +40,7 @@ set inccommand=split
 
 let g:gitblame_enabled = 1
 let g:blamer_delay = 500
+let g:airline_theme = 'codedark'
 
 "nerdtree-git-plugin
 let g:NERDTreeGitStatusIndicatorMapCustom = {
