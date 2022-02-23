@@ -23,14 +23,25 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'manasthakur/vim-commentor'
 Plug 'tomasiser/vim-code-dark'
 Plug 'vim-ruby/vim-ruby'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'sainnhe/sonokai'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 set termguicolors
 lua << EOF
 require("bufferline").setup{}
 EOF
+let g:sonokai_style = 'andromeda'
+let g:sonokai_enable_italic = 1
+let g:sonokai_disable_italic_comment = 0
+let g:sonokai_diagnostic_line_highlight = 1
+let g:sonokai_current_word = 'bold'
+colorscheme sonokai
 
-colorscheme codedark
+set encoding=UTF-8
+
  
 set hidden
 set number
@@ -60,8 +71,6 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 let mapleader="\<space>"
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <C-s> :w!<CR>
-nnoremap <c-p> :Files<cr>
-nnoremap <c-f> :Ag<cr>
 nnoremap <C-q> :qa<CR>
 nnoremap <F1> :bprevious<CR>
 nnoremap <F2> :bnext<CR>
@@ -74,5 +83,11 @@ nnoremap <C-r> :vsplit<CR>
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-a> :NERDTree<CR>
 nnoremap <C-l> :NERDTreeFind<CR>
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 
