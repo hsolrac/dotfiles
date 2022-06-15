@@ -29,10 +29,13 @@ Plug 'sainnhe/sonokai'
 Plug 'ryanoasis/vim-devicons'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
+Plug 'doums/darcula'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'akinsho/toggleterm.nvim'
 call plug#end()
  
 
-set termguicolors
+colorscheme tokyonight
 lua << EOF
 require("bufferline").setup{}
 EOF
@@ -58,8 +61,8 @@ smap <expr> <Tab> snippy#can_jump(1) ? '<Plug>(snippy-next)' : '<Tab>'
 smap <expr> <S-Tab> snippy#can_jump(-1) ? '<Plug>(snippy-previous)' : '<S-Tab>'
 xmap <Tab> <Plug>(snippy-cut-text)
 
-colorscheme gruvbox
-
+colorscheme 
+set background=dark
 set encoding=UTF-8
 
  
@@ -68,6 +71,10 @@ set number
 set relativenumber
 set mouse=a
 set inccommand=split
+set splitbelow
+
+set shiftwidth=2
+
 
 let g:gitblame_enabled = 1
 let g:blamer_delay = 500
@@ -86,6 +93,7 @@ nnoremap <C-x> :term<CR>
 vnoremap <C-c> "+y<CR>
 nnoremap <c-z> :bd<CR>
 nnoremap <C-r> :vsplit<CR>
+nnoremap <leader>t :ToggleTerm<cr>
 
 nnoremap <C-LeftMouse> :echom 'Foo'<CR>
 
@@ -98,3 +106,7 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+
+
+
