@@ -150,9 +150,8 @@ lvim.plugins = {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   },
-  { "APZelos/blamer.nvim" },
-  { 'nvim-lualine/lualine.nvim' },
-  { 'kyazdani42/nvim-web-devicons' }
+  { 'APZelos/blamer.nvim' },
+  {'mg979/vim-visual-multi'}
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
