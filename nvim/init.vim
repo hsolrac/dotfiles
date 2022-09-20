@@ -3,14 +3,11 @@ Plug 'morhetz/gruvbox'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
 Plug 'sheerun/vim-polyglot'
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
@@ -29,21 +26,20 @@ Plug 'sainnhe/sonokai'
 Plug 'ryanoasis/vim-devicons'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
-Plug 'doums/darcula'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'akinsho/toggleterm.nvim'
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'},
+Plug 'jordwalke/vim-taste'
 call plug#end()
  
 
-colorscheme tokyonight
+colorscheme taste
 lua << EOF
 require("bufferline").setup{}
 EOF
-let g:sonokai_style = 'andromeda'
-let g:sonokai_enable_italic = 1
-let g:sonokai_disable_italic_comment = 0
-let g:sonokai_diagnostic_line_highlight = 1
-let g:sonokai_current_word = 'bold'
+"let g:sonokai_style = 'andromeda'
+"let g:sonokai_enable_italic = 1
+"let g:sonokai_disable_italic_comment = 0
+"let g:sonokai_diagnostic_line_highlight = 1
+"let g:sonokai_current_word = 'bold'
 
 
 
@@ -53,6 +49,9 @@ let g:sonokai_current_word = 'bold'
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+
+
 
 
 imap <expr> <Tab> snippy#can_expand_or_advance() ? '<Plug>(snippy-expand-or-advance)' : '<Tab>'
@@ -80,7 +79,6 @@ let g:gitblame_enabled = 1
 let g:blamer_delay = 500
 let g:airline_theme = 'codedark'
 
-
 let mapleader="\<space>"
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <C-s> :w!<CR>
@@ -93,9 +91,8 @@ nnoremap <C-x> :term<CR>
 vnoremap <C-c> "+y<CR>
 nnoremap <c-z> :bd<CR>
 nnoremap <C-r> :vsplit<CR>
-nnoremap <leader>t :ToggleTerm<cr>
-
-nnoremap <C-LeftMouse> :echom 'Foo'<CR>
+nnoremap <C-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-a> :NERDTree<CR>
