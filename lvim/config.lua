@@ -34,7 +34,6 @@ lvim.keys.normal_mode["<C-j>"] = ":m. -2<cr>"
 lvim.keys.normal_mode["<C-h>"] = ":'<,'>m. +1<cr>"
 lvim.keys.normal_mode["<C-y>"] = ":%y<cr>"
 
-
 -- Git keywords 
 
 lvim.keys.normal_mode["dvf"] = ":DiffviewFileHistory<cr>"
