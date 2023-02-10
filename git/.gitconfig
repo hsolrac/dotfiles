@@ -1,21 +1,28 @@
 [user]
-	name = Carlos Henrique
-	email = ch.henriquevinha@gmail.com
+    name = Carlos Henrique
+    email = ch.henriquevinha@gmail.com
 [alias]
-	st = status
-	co = checkout
-	cb = checkout -B
-	ac = !git add -A && git commit -m
-  	save = !git add -A && git commit -m 'SAVEPOINT'
-  	wip = !git add -u && git commit -m "WIP"
-  	undo = reset HEAD~1 --mixed
-  	amend = commit -a --amend
-  	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
-  	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs git branch -d; }; f"
-  	bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
-	p = pull
-	ps = push
-	d = diff
-	l = log
-	brd = branch -d
-	br = branch 
+    st = status
+    co = checkout
+    cb = checkout -B
+    ac = !git add -A && git commit -m
+    save = !git add -A && git commit -m 'SAVEPOINT'
+    wip = !git add -u && git commit -m "WIP"
+    undo = reset HEAD~1 --mixed
+    amend = commit -a --amend
+    wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+    bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs git branch -d; }; f"
+    bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+    pu = pull
+    ps = push
+    df = diff
+    lg = log
+    brd = branch -d
+    rsh = git reset --soft HEAD~1
+  br = branch
+  si = submodule init
+  su = submodule update
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[push]
+        default = current
