@@ -12,8 +12,10 @@ an executable
 -- lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.colorscheme = "everforest"
-lvim.everforest_background = 'medium'
+-- lvim.everforest_background = 'medium'
 
+lvim.everforest_background = 'hard'
+-- lvim.transparent_window = true
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -21,13 +23,21 @@ lvim.everforest_background = 'medium'
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["<C-t>"] = ":ToggleTerm size=30 dir=pwd direction=horizontal<cr>"
+lvim.keys.normal_mode["<C-t>"] = ":ToggleTerm size=20 dir=pwd direction=horizontal<cr>"
 lvim.lsp.diagnostics.virtual_text = false
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
--- lvim.keys.normal_mode["C-a"] = ":vsplit ~/.config/lvim/config.lua<cr>" 
-lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
+lvim.keys.normal_mode["<C-z>"] = ":vsplit ~/.config/lvim/config.lua<cr>"
+lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
+lvim.keys.normal_mode["<C-a>"] = ":vsplit<cr>"
+lvim.keys.normal_mode["<C-j>"] = ":m. -2<cr>"
+lvim.keys.normal_mode["<C-h>"] = ":'<,'>m. +1<cr>"
+lvim.keys.normal_mode["<C-y>"] = ":%y<cr>"
 
+
+-- Git keywords 
+
+lvim.keys.normal_mode["dvf"] = ":DiffviewFileHistory<cr>"
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
 -- local _, actions = pcall(require, "telescope.actions")
@@ -173,7 +183,17 @@ lvim.plugins = {
   { 'lunarvim/Onedarker.nvim' },
   {'f-person/git-blame.nvim'},
   {'sainnhe/everforest'},
-  {'terryma/vim-multiple-cursors'}
+  {'terryma/vim-multiple-cursors'},
+  {'fatih/vim-go'},
+  {'tpope/vim-rails'},
+  {'sebdah/vim-delve'},
+  {'simrat39/rust-tools.nvim'},
+  {'tpope/vim-fugitive'},
+  {'sindrets/diffview.nvim'},
+  {'mhanberg/elixir.nvim'},
+  {'elixir-editors/vim-elixir'}, 
+  {'instant-markdown/vim-instant-markdown'}
+
 }
 
 
