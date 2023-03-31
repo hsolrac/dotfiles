@@ -10,20 +10,17 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/carlos/.oh-my-zsh"
-
-export KUBECONFIG="/home/carlos/Downloads/k8s-carloshenrique-staging-conf"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
-alias bat="batcat"
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
+ZSH_THEME="robbyrussell"
+alias cat="bat"
+alias bu="bundle install"
+alias buu="bundle update"
+alias vi="lvim"
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-alias v="nvim"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
