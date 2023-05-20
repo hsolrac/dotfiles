@@ -37,7 +37,7 @@ end
 
 
 -- airline theme
-vim.g.airline_theme = 'taste'
+vim.g.airline_theme = 'gruvbox'
 vim.g.airline_highlighting_cache = 1
 vim.g.airline_extensions_tabline_enabled = 1
 vim.g.airline_extensions_tabline_buffer_nr_show = 1

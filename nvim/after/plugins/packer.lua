@@ -46,7 +46,18 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'},
 	  }
   }
+  use {'elvessousa/sobrio'}
   use {'jordwalke/vim-taste'}
-
+  use {'manasthakur/vim-commentor'}
+  use {'f-person/git-blame.nvim'}
+  use {'morhetz/gruvbox'}
+  use {
+  'phaazon/hop.nvim',
+  branch = 'v2', -- optional but strongly recommended
+  config = function()
+    -- you can configure Hop the way you like here; see :h hop-config
+    require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+  end
+}
 end)
 

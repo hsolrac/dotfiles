@@ -1,6 +1,6 @@
 package.path = package.path .. ";" .. os.getenv("HOME") .. "/.config/nvim/?.lua"
 
-vim.cmd('colorscheme taste')
+vim.cmd('colorscheme gruvbox')
 require("me.globals")
 require("me.keymaps")
 --require("me.lualine")

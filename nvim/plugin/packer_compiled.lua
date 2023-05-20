@@ -109,6 +109,16 @@ _G.packer_plugins = {
     path = "/home/carlos/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["git-blame.nvim"] = {
+    loaded = true,
+    path = "/home/carlos/.local/share/nvim/site/pack/packer/start/git-blame.nvim",
+    url = "https://github.com/f-person/git-blame.nvim"
+  },
+  gruvbox = {
+    loaded = true,
+    path = "/home/carlos/.local/share/nvim/site/pack/packer/start/gruvbox",
+    url = "https://github.com/morhetz/gruvbox"
+  },
   harpoon = {
     loaded = true,
     path = "/home/carlos/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -164,10 +174,25 @@ _G.packer_plugins = {
     path = "/home/carlos/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  sobrio = {
+    loaded = true,
+    path = "/home/carlos/.local/share/nvim/site/pack/packer/start/sobrio",
+    url = "https://github.com/elvessousa/sobrio"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/carlos/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["vim-airline"] = {
+    loaded = true,
+    path = "/home/carlos/.local/share/nvim/site/pack/packer/start/vim-airline",
+    url = "https://github.com/vim-airline/vim-airline"
+  },
+  ["vim-commentor"] = {
+    loaded = true,
+    path = "/home/carlos/.local/share/nvim/site/pack/packer/start/vim-commentor",
+    url = "https://github.com/manasthakur/vim-commentor"
   },
   ["vim-fugitive"] = {
     loaded = true,
