@@ -45,9 +45,13 @@ return require('packer').startup(function(use)
 		  {'L3MON4D3/LuaSnip'},
 		  {'rafamadriz/friendly-snippets'},
 	  }
+  } 
+  use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
   }
-  use {'elvessousa/sobrio'}
-  use {'jordwalke/vim-taste'}
+--  use {'elvessousa/sobrio'}
+--  use {'jordwalke/vim-taste'}
   use {'manasthakur/vim-commentor'}
   use {'f-person/git-blame.nvim'}
   use {'morhetz/gruvbox'}
@@ -58,6 +62,9 @@ return require('packer').startup(function(use)
     -- you can configure Hop the way you like here; see :h hop-config
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
   end
-}
+  }
+  use{'joshdick/onedark.vim'}
+  use{'terryma/vim-multiple-cursors'}
 end)
+
 

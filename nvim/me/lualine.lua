@@ -1,6 +1,6 @@
 require('lualine').setup{
   options = {
-    theme = 'taste',
+    theme = 'onedark',
   },
   sections = {
     lualine_a = {'mode'},
