@@ -9,13 +9,12 @@ vim.g.airline_extensions_tabline_left_alt_sep = ' '
 vim.g.airline_left_sep = '»'
 vim.g.airline_right_sep = '«'
 vim.g.airline_symbols = {
-  crypt = '🔒',
-  linenr = '☰',
-  maxlinenr = '㏑',
-  branch = '⎇',
-  paste = 'ρ',
-  spell = 'Ꞩ',
-  notexists = 'Ɇ',
-  whitespace = 'Ξ',
+	crypt = '🔒',
+	linenr = '☰',
+	maxlinenr = '㏑',
+	branch = '⎇',
+	paste = 'ρ',
+	spell = 'Ꞩ',
+	notexists = 'Ɇ',
+	whitespace = 'Ξ',
 }
-

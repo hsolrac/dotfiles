@@ -110,27 +110,39 @@ function OrganizeImports(timeoutms)
 end
 
 local lspconfig = require('lspconfig')
---lspconfig.gopls.setup {
---	capabilities = capabilities,
---	on_attach = on_attach,
---	settings = {
---		gopls = {
---			gofumpt = true,
---		},
---	},
---	flags = {
---		debounce_text_changes = 150,
---	},
---}
+lspconfig.gopls.setup {
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = {
+		gopls = {
+			gofumpt = true,
+		},
+	},
+	flags = {
+		debounce_text_changes = 150,
+	},
+}
 
 lspconfig.lua_ls.setup {
 	capabilities = capabilities,
 	on_attach = on_attach,
+	settings = {
+		Lua = {
+			tabWidth = 2
+		}
+	}
 }
 
 lspconfig.solargraph.setup {
 	capabilities = capabilities,
 	on_attach = on_attach,
+	settings = {
+		solargraph = {
+			formatting = {
+				tabSize = 2
+			}
+		}
+	}
 }
 
 lspconfig.clangd.setup {
@@ -161,4 +173,9 @@ lspconfig.rust_analyzer.setup {
 lspconfig.tsserver.setup {
 	capabilities = capabilities,
 	on_attach = on_attach,
+	settings = {
+		editor = {
+			tabSize = 2
+		}
+	}
 }

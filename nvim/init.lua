@@ -1,4 +1,3 @@
-
 package.path = package.path .. ";" .. os.getenv("HOME") .. "/.config/nvim/?.lua"
 
 vim.cmd('colorscheme gruvbox')
