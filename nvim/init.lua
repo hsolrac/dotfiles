@@ -11,3 +11,4 @@ require("after.plugins.mason")
 require("after.plugins.telescope")
 require("after.plugins.packer")
 require("after.plugins.nvimtreesitter")
+require("bufferline").setup {}
