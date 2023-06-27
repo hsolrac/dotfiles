@@ -172,10 +172,5 @@ lspconfig.rust_analyzer.setup {
 
 lspconfig.tsserver.setup {
 	capabilities = capabilities,
-	on_attach = on_attach,
-	settings = {
-		editor = {
-			tabSize = 2
-		}
-	}
+	on_attach = on_attach
 }

@@ -50,7 +50,7 @@ return require('packer').startup(function(use)
 		"williamboman/mason.nvim",
 		run = ":MasonUpdate" -- :MasonUpdate updates registry contents
 	}
-	--  use {'elvessousa/sobrio'}
+	use { 'elvessousa/sobrio' }
 	--  use {'jordwalke/vim-taste'}
 	use { 'manasthakur/vim-commentor' }
 	use { 'f-person/git-blame.nvim' }
@@ -67,4 +67,7 @@ return require('packer').startup(function(use)
 	use { 'terryma/vim-multiple-cursors' }
 	use { 'windwp/nvim-autopairs' }
 	use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
+	use { 'telamon/vim-color-github' }
+	use { 'tjdevries/colorbuddy.vim' }
+	use { 'tjdevries/gruvbuddy.nvim' }
 end)
