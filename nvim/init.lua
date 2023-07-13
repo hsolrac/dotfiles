@@ -1,6 +1,6 @@
 package.path = package.path .. ";" .. os.getenv("HOME") .. "/.config/nvim/?.lua"
 
-require('colorbuddy').colorscheme('gruvbuddy')
+require('colorbuddy').colorscheme('gruvbox')
 require("me.globals")
 require("me.keymaps")
 require("me.options")

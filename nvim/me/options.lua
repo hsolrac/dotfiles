@@ -1,6 +1,6 @@
 vim.g.gitblame_enabled = 1
 vim.g.blamer_delay = 500
-vim.cmd('set guifont=monospace:h12')
+vim.cmd('set guifont=monospace:h9')
 vim.o.swapfile = false
 -- style
 vim.o.background = "dark"
@@ -29,4 +29,5 @@ end
 
 -- search
 vim.o.grepprg = "ag --vimgrep"
-vim.o.shiftwidth = 2
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4

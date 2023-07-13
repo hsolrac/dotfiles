@@ -70,4 +70,5 @@ return require('packer').startup(function(use)
 	use { 'telamon/vim-color-github' }
 	use { 'tjdevries/colorbuddy.vim' }
 	use { 'tjdevries/gruvbuddy.nvim' }
+	use { 'vim-scripts/HTML-AutoCloseTag' }
 end)

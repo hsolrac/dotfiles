@@ -51,4 +51,5 @@ nmap{"H", "<cmd>bprevious<cr>"}
 nmap{"F", "<cmd>HopPattern<cr>"}
 
 nmap{"<leader>ev", ":vsplit ~/.config/nvim/init.lua<cr>"}
-
+nmap{"<C-j>", ":m .-2<CR>"}
+nmap{"<C-k>", ":m .+1<CR>"}
