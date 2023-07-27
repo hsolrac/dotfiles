@@ -71,4 +71,6 @@ return require('packer').startup(function(use)
 	use { 'tjdevries/colorbuddy.vim' }
 	use { 'tjdevries/gruvbuddy.nvim' }
 	use { 'vim-scripts/HTML-AutoCloseTag' }
+	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
 end)

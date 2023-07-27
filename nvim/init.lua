@@ -12,3 +12,4 @@ require("after.plugins.telescope")
 require("after.plugins.packer")
 require("after.plugins.nvimtreesitter")
 require("bufferline").setup {}
+require('lspconfig/quick_lint_js').setup {}
