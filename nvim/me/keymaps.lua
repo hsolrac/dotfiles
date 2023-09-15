@@ -31,12 +31,10 @@ end
 
 local ok, treesitter = pcall(require, "nvim-treesitter.configs")
 if not ok then return end
+
 treesitter.setup { ensure_installed = "all", highlight = { enable = true } }
 
-require("hop").setup()
-
--- keymaps
-nmap{"<C-f>", "<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending prompt_position=top<CR>"}
+nmap{"<C-f>", "<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending prompt_position=top<CR>"} 
 nmap{"<C-s>", ":w!<CR>"}
 nmap{"<C-r>", ":vsplit<CR>"}
 nmap{"<C-q>", ":bd<CR>"}
@@ -53,3 +51,5 @@ nmap{"F", "<cmd>HopPattern<cr>"}
 nmap{"<leader>ev", ":vsplit ~/.config/nvim/init.lua<cr>"}
 nmap{"<C-j>", ":m .-2<CR>"}
 nmap{"<C-k>", ":m .+1<CR>"}
+nmap{"<C-l>", ":Explore<CR>"}
+

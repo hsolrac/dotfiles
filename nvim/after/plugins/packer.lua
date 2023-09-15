@@ -19,14 +19,14 @@ return require('packer').startup(function(use)
 			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
 			ts_update()
 		end, }
-	use("theprimeagen/harpoon")
 	use("tpope/vim-fugitive")
+	use("vim-airline/vim-airline")
+	use { 'joshdick/onedark.vim' }
 	use("nvim-treesitter/nvim-treesitter-context");
 	--	use("nvim-lualine/lualine.nvim")
-	use("vim-airline/vim-airline")
 	use {
 		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v1.x',
+		branch = 'v2.x',
 		requires = {
 			-- LSP Support
 			{ 'neovim/nvim-lspconfig' },
@@ -50,7 +50,7 @@ return require('packer').startup(function(use)
 		"williamboman/mason.nvim",
 		run = ":MasonUpdate" -- :MasonUpdate updates registry contents
 	}
-	use { 'elvessousa/sobrio' }
+	--	use { 'elvessousa/sobrio' }
 	--  use {'jordwalke/vim-taste'}
 	use { 'manasthakur/vim-commentor' }
 	use { 'f-person/git-blame.nvim' }
@@ -63,7 +63,6 @@ return require('packer').startup(function(use)
 			require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
 		end
 	}
-	use { 'joshdick/onedark.vim' }
 	use { 'terryma/vim-multiple-cursors' }
 	use { 'windwp/nvim-autopairs' }
 	use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
@@ -71,6 +70,4 @@ return require('packer').startup(function(use)
 	use { 'tjdevries/colorbuddy.vim' }
 	use { 'tjdevries/gruvbuddy.nvim' }
 	use { 'vim-scripts/HTML-AutoCloseTag' }
-	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
-
 end)
