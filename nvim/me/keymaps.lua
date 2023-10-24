@@ -34,7 +34,6 @@ if not ok then return end
 
 treesitter.setup { ensure_installed = "all", highlight = { enable = true } }
 
-nmap{"<C-f>", "<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending prompt_position=top<CR>"} 
 nmap{"<C-s>", ":w!<CR>"}
 nmap{"<C-r>", ":vsplit<CR>"}
 nmap{"<C-q>", ":bd<CR>"}

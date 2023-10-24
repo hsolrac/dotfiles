@@ -1,33 +1,22 @@
-vim.g.gitblame_enabled = 1
-vim.g.blamer_delay = 500
-vim.cmd('set guifont=monospace:h9')
-vim.o.swapfile = false
--- style
-vim.o.background = "dark"
-vim.o.encoding = "UTF-8"
-vim.o.hidden = true
-vim.o.number = true
---vim.o.relativenumber = true
-vim.o.mouse = "a"
-vim.o.inccommand = "split"
-vim.o.splitbelow = true
+local options = {
+	ma = true,
+	mouse = "a",
+	cursorline = true,
+	tabstop = 4,
+	shiftwidth = 4,
+	softtabstop = 4,
+	expandtab = true,
+	autoread = true,
+	nu = true,
+	foldlevelstart = 99,
+	scrolloff = 7,
+	backup = false,
+	writebackup = false,
+	swapfile = false,
+	clipboard = "unnamedplus",
+	showmode = false,
+}
 
-
--- Enable true-color mode in Neovim
-vim.o.termguicolors = true
-
--- Use 24-bit color support when outside tmux
-if os.getenv("TMUX") == nil then
-	if vim.fn.has("nvim") == 1 then
-		-- For Neovim 0.1.3 and 0.1.4
-		vim.env.NVIM_TUI_ENABLE_TRUE_COLOR = 1
-	elseif vim.fn.has("termguicolors") == 1 then
-		-- For Neovim > 0.1.5 and Vim > patch 7.4.1799
-		vim.o.termguicolors = true
-	end
+for k, v in pairs(options) do
+	vim.opt[k] = v
 end
-
--- search
-vim.o.grepprg = "ag --vimgrep"
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
