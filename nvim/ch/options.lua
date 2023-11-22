@@ -2,9 +2,9 @@ local options = {
 	ma = true,
 	mouse = "a",
 	cursorline = true,
-	tabstop = 4,
-	shiftwidth = 4,
-	softtabstop = 4,
+	tabstop = 2,
+	shiftwidth = 2,
+	softtabstop = 2,
 	expandtab = true,
 	autoread = true,
 	nu = true,
@@ -15,6 +15,7 @@ local options = {
 	swapfile = false,
 	clipboard = "unnamedplus",
 	showmode = false,
+  autoindent = true
 }
 
 for k, v in pairs(options) do

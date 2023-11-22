@@ -28,12 +28,6 @@ imap = function(tbl)
 	keymap(tbl)
 end
 
-
-local ok, treesitter = pcall(require, "nvim-treesitter.configs")
-if not ok then return end
-
-treesitter.setup { ensure_installed = "all", highlight = { enable = true } }
-
 nmap{"<C-s>", ":w!<CR>"}
 nmap{"<C-r>", ":vsplit<CR>"}
 nmap{"<C-q>", ":bd<CR>"}
