@@ -1,3 +1,5 @@
+local set = vim.opt
+
 local options = {
 	ma = true,
 	mouse = "a",
@@ -19,5 +21,5 @@ local options = {
 }
 
 for k, v in pairs(options) do
-	vim.opt[k] = v
+	set[k] = v
 end

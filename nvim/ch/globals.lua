@@ -14,3 +14,4 @@ vim.cmd "hi! normal ctermbg=none"
 vim.g.mapleader = " "
 -- Ativar nvim-autopairs
 require('nvim-autopairs').setup {}
+require("bufferline").setup {}

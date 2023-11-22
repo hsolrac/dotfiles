@@ -1,17 +1,24 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
-vim.cmd.packadd('packer.nvim')
+local fn = vim.fn
+
+-- Automatically install packer
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  print("Installing packer close and reopen Neovim...")
+  vim.cmd 'packadd packer.nvim'
+  require("packer").sync()
+end
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use { "nvim-telescope/telescope.nvim", tag = '0.1.4' }
-  use("tpope/vim-fugitive")
   use("vim-airline/vim-airline")
 	use { 'neovim/nvim-lspconfig' }
   use { 'f-person/git-blame.nvim' }
   use { 'morhetz/gruvbox' }
   use { 'lunarvim/Onedarker.nvim' }
 	use { 'joshdick/onedark.vim' }
-  use { 'terryma/vim-multiple-cursors' }
   use { 'windwp/nvim-autopairs' }
   use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
   use 'neovim/nvim-lspconfig'
