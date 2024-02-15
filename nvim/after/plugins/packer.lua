@@ -21,7 +21,6 @@ return require('packer').startup(function(use)
 	use { 'joshdick/onedark.vim' }
   use { 'windwp/nvim-autopairs' }
   use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
-  use 'neovim/nvim-lspconfig'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -43,5 +42,13 @@ return require('packer').startup(function(use)
     })
   use { "ibhagwan/fzf-lua",
     requires = { "nvim-tree/nvim-web-devicons" }
+  }
+  use {'iamcco/markdown-preview.nvim'}
+  use {'mfussenegger/nvim-jdtls'}
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
   }
 end)

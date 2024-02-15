@@ -7,4 +7,5 @@ require("ch.keymaps")
 require("ch.lsp")
 require("ch.airline")
 require("after.plugins.fzffiles")
+-- require("after.plugins.java")
 
