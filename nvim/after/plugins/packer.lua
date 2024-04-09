@@ -51,4 +51,5 @@ return require('packer').startup(function(use)
           require('Comment').setup()
       end
   }
+  use { 'Exafunction/codeium.vim' }
 end)

@@ -9,6 +9,7 @@ lsp_config.rust_analyzer.setup {
     ['rust-analyzer'] = {},
   },
 }
+
 lsp_config.jdtls.setup{
     cmd = {'/home/carlos/jdt-language-server/bin/jdtls'},
 }
@@ -24,7 +25,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { noremap = true, silent = true }
-    vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     vim.keymap.set('n', 'gD', "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
     vim.keymap.set('n', 'K', "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     vim.keymap.set('n', 'gi', "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)

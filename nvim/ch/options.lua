@@ -17,7 +17,8 @@ local options = {
 	swapfile = false,
 	clipboard = "unnamedplus",
 	showmode = false,
-  autoindent = true
+	autoindent = true,
+	undofile = false
 }
 
 for k, v in pairs(options) do
