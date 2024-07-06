@@ -1,5 +1,14 @@
 #!/bin/bash
 
+install_packages_and_programms() {
+  npm install -g @bitwarden/cli
+  
+  #kitty
+  curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+  ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
+  cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
+}
+
 install_asdf_packages() {
     asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
     asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
@@ -47,8 +56,6 @@ setup_manjaro() {
 
     move_dotfiles
 
-    sudo pacman -S --noconfirm bitwarden-cli
-
     sudo pacman -S --noconfirm fish
 
     chsh -s /usr/bin/fish
@@ -80,8 +87,6 @@ setup_ubuntu() {
     git clone https://github.com/hsolrac/dotfiles ~/repos/dotfiles
 
     move_dotfiles
-
-    sudo apt install -y bitwarden-cli
 
     sudo apt install -y fish
 

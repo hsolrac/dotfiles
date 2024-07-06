@@ -14,7 +14,7 @@ require("mason-lspconfig").setup({
     "lua_ls",
     "rust_analyzer",
     "gopls",
-    "solargraph",
+    "ruby_lsp",
     "tsserver"
   },
   handlers = {
@@ -58,29 +58,29 @@ require("mason-lspconfig").setup({
       vim.g.zig_fmt_autosave = 0
     end,
 
-    ["lua_ls"] = function()
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup {
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            runtime = { version = "Lua 5.1" },
-            diagnostics = {
-              globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
-            }
-          }
-        },
-        on_attach = function(_, bufnr)
-          local buf_set_keymap = function(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-          local opts = { noremap = true, silent = true }
+     -- ["lua_ls"] = function()
+     --   local lspconfig = require("lspconfig")
+     --   lspconfig.lua_ls.setup {
+     --     capabilities = capabilities,
+     --     settings = {
+     --       Lua = {
+     --         runtime = { version = "Lua 5.1" },
+     --         diagnostics = {
+     --           globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
+     --         }
+     --       }
+     --     },
+     --     on_attach = function(_, bufnr)
+     --       local buf_set_keymap = function(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+     --       local opts = { noremap = true, silent = true }
 
-          buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-          buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-          buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-          buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-        end,
-      }
-    end,
+     --       buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+     --       buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+     --       buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+     --       buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+     --     end,
+     --   }
+     -- end,
   }
 })
 
@@ -95,15 +95,27 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ["<C-Space>"] = cmp.mapping.complete(),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' }, -- For luasnip users.
+    { name = "nvim_lsp" }, -- For nvim-lsp
+    { name = "ultisnips" }, -- For ultisnips user.
+    { name = "path" }, -- for path completion
+    { name = "buffer", keyword_length = 2 }, -- for buffer word completion
+    { name = "emoji", insert = true },
   }, {
     { name = 'buffer' },
-  })
+  }), 
+  completion = {
+    keyword_length = 1,
+    completeopt = "menu,noselect",
+  },
+  view = {
+    entries = "custom",
+  }
 })
 
 vim.diagnostic.config({

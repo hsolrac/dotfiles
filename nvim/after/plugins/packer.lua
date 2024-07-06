@@ -28,8 +28,6 @@ return require('packer').startup(function(use)
   }
   use { "hrsh7th/cmp-nvim-lsp" }
   use { "hrsh7th/nvim-cmp" }
-  use { "puremourning/vimspector" }
-
   -- LSP PLUGINS
   use { 
       "williamboman/mason.nvim",
@@ -52,6 +50,12 @@ return require('packer').startup(function(use)
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
     }}
-
-  use { "j-hui/fidget.nvim" }
+  use { "tpope/vim-fugitive" }
+  use {
+      "windwp/nvim-autopairs",
+      event = "InsertEnter",
+      config = function()
+          require("nvim-autopairs").setup {}
+      end
+  }
 end)
