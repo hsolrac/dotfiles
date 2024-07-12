@@ -1,40 +1,50 @@
 #!/bin/bash
 
 install_packages_and_programms() {
+  #cli bitwarden 
   npm install -g @bitwarden/cli
   
   #kitty
   curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
   ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
   cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
+
+  #neovim
+  git clone git@github.com:neovim/neovim.git
+
+  make CMAKE_BUILD_TYPE=RelWithDebInfo
+  sudo make install
 }
 
 install_asdf_packages() {
-    asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
-    asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+    asdf plugin add ruby 
+    asdf plugin add nodejs 
     asdf plugin add yarn
-    asdf plugin add rust https://github.com/code-lever/asdf-rust.git
-    asdf plugin add neovim https://github.com/richin13/asdf-neovim.git
+    asdf plugin add rust 
+    asdf plugin add redis
+    asdf plugin add tmux
 
     asdf install ruby latest
     asdf install nodejs latest
     asdf install yarn latest
     asdf install rust latest
-    asdf install neovim latest
+    asdf install redis latest
+    asdf install tmux latest
 
     asdf global ruby latest
     asdf global nodejs latest
     asdf global yarn latest
     asdf global rust latest
-    asdf global neovim latest
+    asdf global redis latest
+    asdf global tmux latest
 }
 
-move_dotfiles() {
+copy_dotfiles() {
     mkdir -p ~/.config/nvim
-    mv ~/repos/dotfiles/nvim/* ~/.config/nvim/
+    cp -r ~/repos/dotfiles/nvim/* ~/.config/nvim/
 
-    mv ~/repos/dotfiles/i3 ~/.config/
-    mv ~/repos/dotfiles/fish ~/.config/
+    cp -r ~/repos/dotfiles/i3 ~/.config/
+    cp -r ~/repos/dotfiles/fish ~/.config/
 }
 
 setup_manjaro() {
@@ -54,7 +64,7 @@ setup_manjaro() {
 
     git clone https://github.com/hsolrac/dotfiles ~/repos/dotfiles
 
-    move_dotfiles
+    copy_dotfiles
 
     sudo pacman -S --noconfirm fish
 
@@ -86,7 +96,7 @@ setup_ubuntu() {
 
     git clone https://github.com/hsolrac/dotfiles ~/repos/dotfiles
 
-    move_dotfiles
+    copy_dotfiles
 
     sudo apt install -y fish
 
