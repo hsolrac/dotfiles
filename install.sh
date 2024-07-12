@@ -1,5 +1,4 @@
 #!/bin/bash
-
 install_packages_and_programms() {
   #cli bitwarden 
   npm install -g @bitwarden/cli
@@ -41,10 +40,10 @@ install_asdf_packages() {
 
 copy_dotfiles() {
     mkdir -p ~/.config/nvim
-    cp -r ~/repos/dotfiles/nvim/* ~/.config/nvim/
+    cp -r ~/repos/dotfiles/config/nvim/* ~/.config/nvim/
 
-    cp -r ~/repos/dotfiles/i3 ~/.config/
-    cp -r ~/repos/dotfiles/fish ~/.config/
+    cp -r ~/repos/dotfiles/config/i3 ~/.config/
+    cp -r ~/repos/dotfiles/config/fish ~/.config/
 }
 
 setup_manjaro() {
@@ -52,7 +51,7 @@ setup_manjaro() {
 
     sudo pacman -Syu --noconfirm
 
-    sudo pacman -S --noconfirm base-devel git curl wget
+    sudo pacman -S --noconfirm base-devel git curl wget i3 i3status
 
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
     echo '. $HOME/.asdf/asdf.sh' >> ~/.bashrc
@@ -84,7 +83,7 @@ setup_ubuntu() {
 
     sudo apt update && sudo apt upgrade -y
 
-    sudo apt install -y build-essential git curl wget
+    sudo apt install -y build-essential git curl wget i3 i3status 
 
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
     echo '. $HOME/.asdf/asdf.sh' >> ~/.bashrc
