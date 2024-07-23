@@ -44,6 +44,8 @@ copy_dotfiles() {
 
     cp -r ~/repos/dotfiles/config/i3 ~/.config/
     cp -r ~/repos/dotfiles/config/fish ~/.config/
+
+    cp -r ~/repos/dotfiles/aliases ~/.aliases 
 }
 
 setup_manjaro() {
