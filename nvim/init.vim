@@ -9,35 +9,23 @@ set nobackup
 set nowritebackup
 set encoding=utf-8
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.vim/plugged')
+
 Plug 'neoclide/coc.nvim'
-Plug 'kyazdani42/nvim-tree.lua'
 Plug 'morhetz/gruvbox'
+Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'apzelos/blamer.nvim'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 colorscheme gruvbox
 
-map <silent> <C-l> :NvimTreeToggle<CR>
+nmap <C-l> :NERDTreeFind<CR>
 
-lua << EOF
-require("nvim-tree").setup {
-    actions = {
-        open_file = {
-            quit_on_open = true,
-        }
-    },
-    git = {
-      enable = true,
-      ignore = false,
-      timeout = 500,
-    },
-}
-EOF
-
-let g:NERDTreeIgnore = ['^node_modules$', 'public']
+let g:NERDTreeIgnore = ['^node_modules$']
 
 let g:coc_global_extensions = [
   \ 'coc-snippets', 
@@ -54,12 +42,6 @@ let g:coc_global_extensions = [
 "commmand open vim config 
 nmap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 
-"GoTo code navigation
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -69,8 +51,6 @@ nmap <C-s> :w!<CR>
 nmap <C-q> :bd<CR>
 nmap <c-f> :Rg<cr>
 nmap <C-r> :vsplit<CR>
-nmap <C-j> :m .+1<CR>
-nmap <C-k> :m .-2<CR>
 nmap <S-h> :bprev<CR>
 nmap <S-l> :bnext<CR>
 
@@ -104,7 +84,6 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
