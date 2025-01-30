@@ -19,6 +19,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'apzelos/blamer.nvim'
 Plug 'sindrets/diffview.nvim'
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
