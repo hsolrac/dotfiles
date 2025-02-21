@@ -11,9 +11,8 @@ set encoding=utf-8
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
 Plug 'morhetz/gruvbox'
-Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
@@ -25,7 +24,7 @@ call plug#end()
 
 colorscheme gruvbox
 
-nmap <C-l> :NERDTreeFind<CR>
+nmap <C-l> :Explore<CR>
 
 let g:NERDTreeIgnore = ['^node_modules$']
 
@@ -44,14 +43,39 @@ let g:coc_global_extensions = [
 "commmand open vim config 
 nmap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " Remap find files
 nmap <C-p> :Files <CR>
 nmap <C-s> :w!<CR>
 nmap <C-q> :bd<CR>
-nmap <c-f> :Rg<cr>
+nmap <C-f> :Rg<cr>
 nmap <C-r> :vsplit<CR>
 nmap <S-h> :bprev<CR>
 nmap <S-l> :bnext<CR>
