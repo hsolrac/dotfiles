@@ -1,0 +1,9 @@
+curl
+git
+tmux
+ripgrep
+fzf
+fd
+cmake
+ninja
+picom
