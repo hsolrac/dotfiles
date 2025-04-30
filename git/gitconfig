@@ -1,0 +1,18 @@
+[user]
+	email = ch.henriquevinha@gmail.com
+	name = Carlos Henrique
+[github]
+  name = Hsolrac
+  email = ch.henriquevinha@gmail.com
+[color]
+	ui = true
+[core]
+	editor = nvim
+[pull]
+	rebase = true
+[push]
+	default = current
+[rerere]
+	enabled = true
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
