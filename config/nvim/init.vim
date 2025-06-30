@@ -8,6 +8,11 @@ set completeopt=longest,menuone
 set nobackup
 set nowritebackup
 set encoding=utf-8
+set fileencoding=utf-8
+set foldmethod=expr         
+set foldlevelstart=99
+
+filetype plugin indent on
 
 call plug#begin('~/.vim/plugged')
 
@@ -18,14 +23,22 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'apzelos/blamer.nvim'
 Plug 'sindrets/diffview.nvim'
-Plug 'itchyny/lightline.vim'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 call plug#end()
 
 colorscheme gruvbox
 
-nmap <C-l> :Explore<CR>
+nmap <C-l> :NvimTreeFindFileToggle<CR>
 
 let g:NERDTreeIgnore = ['^node_modules$']
 
@@ -41,11 +54,11 @@ let g:coc_global_extensions = [
 	\	'coc-solargraph',
 	\	'coc-rust-analyzer',
 	\ ]
-
+let g:mkdp_auto_start = 1
 
 "commmand open vim config 
 nmap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
-
+nmap <leader>cr :CocRestart
 
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
@@ -62,6 +75,10 @@ function! ShowDocumentation()
   else
     call feedkeys('K', 'in')
   endif
+endfunction
+
+function! LightlineFilename()
+  return expand('%:.')
 endfunction
 
 " Highlight the symbol and its references when holding the cursor
@@ -82,8 +99,11 @@ nmap <C-f> :Rg<cr>
 nmap <C-r> :vsplit<CR>
 nmap <S-h> :bprev<CR>
 nmap <S-l> :bnext<CR>
+nmap <leader>g :GFiles?<CR>
+nmap <leader>hb :lua require('gitsigns').blame_line({ full = true })<CR>
+nmap <leader>ht :lua require('gitsigns').toggle_current_line_blame()<CR>
 
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>ca  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 " Use K to show documentation in preview window
@@ -124,7 +144,114 @@ endfunction
 
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
+
+nnoremap % :call CreateNewFile()<CR>
+nnoremap <leader>d :call CreateNewDirectory()<CR>
+
+function! CreateNewFile()
+  let l:filename = input('Filename: ')
+  if !empty(l:filename)
+    execute 'edit' l:filename
+  endif
+endfunction
+
+function! CreateNewDirectory()
+  let l:dirname = input('Directory name: ')
+  if !empty(l:dirname)
+    call mkdir(l:dirname, "p")
+    echo 'Diretório criado: ' . l:dirname
+  endif
+endfunction
+
 lua << EOF
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+			theme = 'gruvbox',
+    always_divide_middle = true,
+    always_show_tabline = true,
+  },
+  sections = {
+    lualine_c = {
+      {
+        'filename',
+        path = 4,  
+        shorting_target = 40,  
+				symbols = {
+						modified = " ●",
+						alternate_file = "#",
+						directory = "",
+      	},
+      }
+    },
+		lualine_b = {
+				{
+						"branch",
+						fmt = function(branch)
+								local limit = 20
+								return branch:sub(1, limit) .. (branch:len() > limit and "…" or "")
+						end,
+				},
+				"diff",
+				"diagnostics",
+		},
+  }
+}
+require("bufferline").setup {
+  options = {
+    mode = "buffers", -- pode ser "tabs" também
+    numbers = "ordinal", -- ou "buffer_id", ou "both"
+    close_command = "bdelete! %d", -- comando para fechar buffer
+    right_mouse_command = "bdelete! %d",
+    left_mouse_command = "buffer %d", -- como o clique esquerdo age
+    middle_mouse_command = nil,
+
+    indicator = {
+      icon = '▎', -- ícone ao lado do buffer ativo
+      style = 'icon',
+    },
+
+    buffer_close_icon = '',
+    modified_icon = '●',
+    close_icon = '',
+    left_trunc_marker = '',
+    right_trunc_marker = '',
+
+    max_name_length = 18,
+    max_prefix_length = 15,
+    tab_size = 18,
+
+    diagnostics = "nvim_lsp",
+    diagnostics_update_in_insert = false,
+    custom_filter = function(buf_number)
+      local filetype = vim.bo[buf_number].filetype
+      if filetype == "NvimTree" then
+        return false
+      end
+      return true
+    end,
+    offsets = {
+      {
+        filetype = "NvimTree", 
+        text = "File Explorer",
+        text_align = "center",
+        separator = true,
+      }
+    },
+
+    show_buffer_icons = true, -- ícones no buffer
+    show_buffer_close_icons = true,
+    show_close_icon = true,
+    show_tab_indicators = true,
+    persist_buffer_sort = true, -- mantém a ordenação entre sessões
+
+    separator_style = "slant", -- estilos: "slant" | "thick" | "thin" | {"", ""}
+    enforce_regular_tabs = false,
+    always_show_bufferline = true,
+  }
+}
+require("ibl").setup()
+require("nvim-tree").setup()
 require('gitsigns').setup {
   signs = {
     add          = { text = '┃' },
@@ -176,3 +303,4 @@ require('gitsigns').setup {
   },
 }
 EOF
+highlight GitSignsCurrentLineBlame guifg=#909090 gui=italic
