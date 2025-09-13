@@ -52,11 +52,39 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # services.xserver.enable = true;
+  environment.pathsToLink = [ "/libexec" ]; 
 
-  # Enable the Cinnamon Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.cinnamon.enable = true;
+  services.xserver = {
+    enable = true;
+  
+    desktopManager = {
+      xterm.enable = false;
+    };
+  
+    displayManager = {
+      lightdm.enable = true;
+      defaultSession = "none+i3";
+    };
+  
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu
+        i3status
+        i3lock
+        i3blocks
+        rofi
+      ];
+    };
+  };
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+  services.xserver.screenSection = ''
+    Option "PreferredMode" "1920x1080"
+  '';
+
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -131,6 +159,9 @@
     direnv
     nix-direnv
     postman
+    libreoffice
+    elixir
+    maim
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -1,6 +1,3 @@
-#Neovim
-alias vim="neovim"
-
 ### rails
 alias bu="bundle install"
 alias bu="bundle update"
@@ -20,5 +17,14 @@ alias nodies="asdf list nodejs"
 alias ls="ls -l"
 
 
+alias vim="NVIM_APPNAME=nvimreu nvim"
+alias vi="NVIM_APPNAME=nvimreu nvim"
+
 ###docker 
 alias docked="docker exec -it"
+
+alias onescreen="xrandr --output HDMI-1 --mode 1920x1080 --rate 60 --primary \
+                           --output eDP-1 --off"
+
+alias twoscreen="xrandr --output HDMI-1 --mode 1920x1080 --rate 60 --primary \
+                           --output eDP-1 --mode 1366x768 --right-of HDMI-1"
