@@ -1,4 +1,4 @@
-# Edit this configuration file to define what should be installed on
+# Edi this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
@@ -28,6 +28,13 @@
     nerd-fonts.fira-code
     fira-code-symbols
   ];
+
+  nix = {
+    package = pkgs.nix;  # optional but recommended
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   fonts.fontconfig.enable = true;
   # Enable networking
@@ -127,7 +134,7 @@
     ];
     shell = pkgs.fish;
   };
-
+  virtualisation.docker.enable = true;
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -150,7 +157,6 @@
     yarn
     nodejs
     docker
-    mongodb
     jq
     ripgrep
     fzf
@@ -160,8 +166,11 @@
     nix-direnv
     postman
     libreoffice
-    elixir
     maim
+    flameshot
+    mongodb-compass
+    xclip
+    feh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

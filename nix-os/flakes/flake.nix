@@ -27,6 +27,7 @@
 						pkgs.awscli2
 						pkgs.git
 						pkgs.mongosh
+						pkgs.typescript-language-server
           ];
 
           shellHook = ''

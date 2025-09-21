@@ -16,9 +16,7 @@ alias rubies="asdf list ruby"
 alias nodies="asdf list nodejs"
 alias ls="ls -l"
 
-
-alias vim="NVIM_APPNAME=nvimreu nvim"
-alias vi="NVIM_APPNAME=nvimreu nvim"
+alias purevim="NVIM_APPNAME=purevim nvim"
 
 ###docker 
 alias docked="docker exec -it"
