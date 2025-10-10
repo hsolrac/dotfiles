@@ -16,7 +16,7 @@
     nerd-fonts.fira-code
     fira-code-symbols
     font-awesome
-    nerdfonts
+    # nerdfonts
   ];
 
   nix = {
@@ -26,13 +26,7 @@
     '';
   };
 
-  fonts.fontconfig = {
-    enable = true;
-      defaultFonts = {
-        monospace = [ "FiraCode Nerd Font Mono" "Font Awesome 6 Free" ];
-        sansSerif = [ "FiraCode Nerd Font" "Font Awesome 6 Free" ];
-      };
-  };
+  fonts.fontconfig.enable = true;
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/Sao_Paulo";
@@ -136,6 +130,9 @@
       inherit (pkgs') neovim;
     };
   };
+   nixpkgs.config.permittedInsecurePackages = [
+     "python-2.7.18.8"
+   ];
 
   environment.systemPackages = with pkgs; [
     neovim
@@ -167,6 +164,7 @@
     tmuxinator
     usql
     picom
+    pavucontrol
   ];
 
   programs.fish.enable = true;
