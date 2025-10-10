@@ -4,7 +4,6 @@
     ./hardware-configuration.nix
   ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -16,6 +15,8 @@
   fonts.packages = with pkgs; [ 
     nerd-fonts.fira-code
     fira-code-symbols
+    font-awesome
+    nerdfonts
   ];
 
   nix = {
@@ -25,7 +26,13 @@
     '';
   };
 
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true;
+      defaultFonts = {
+        monospace = [ "FiraCode Nerd Font Mono" "Font Awesome 6 Free" ];
+        sansSerif = [ "FiraCode Nerd Font" "Font Awesome 6 Free" ];
+      };
+  };
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/Sao_Paulo";
@@ -65,12 +72,13 @@
         i3lock
         i3blocks
         rofi
+        polybar
       ];
     };
   };
 
   services.displayManager.defaultSession = "none+i3";
-  
+
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
@@ -89,11 +97,16 @@
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
+  services.picom = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+    backend = "glx";
+    vSync = true;
+    settings = {
+      blur = {
+        method = "kernel";
+        strength = 6;
+      };
+    };
   };
 
   users.users.carlos = {
@@ -108,7 +121,6 @@
   virtualisation.docker.enable = true;
   programs.firefox.enable = true;
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config = {
    packageOverrides = pkgs: let
@@ -126,13 +138,12 @@
   };
 
   environment.systemPackages = with pkgs; [
-    vim
     neovim
     wget
     git 
     unzip 
     gzip 
-    tmux 
+    tmux
     gcc
     google-chrome 
     fish
@@ -153,6 +164,9 @@
     mongodb-compass
     xclip
     feh
+    tmuxinator
+    usql
+    picom
   ];
 
   programs.fish.enable = true;

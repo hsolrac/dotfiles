@@ -11,23 +11,23 @@
       let
         pkgs = import nixpkgs {
           inherit system;
-					config = {
-						allowUnfree = true;
-          	allowUnfreePredicate = _: true;
-					};
+          config = {
+            allowUnfree = true;
+            allowUnfreePredicate = _: true;
+          };
         };
-				
+
 
         nodejs = pkgs.nodejs_20;  
       in {
         devShell = pkgs.mkShell {
           buildInputs = [
             nodejs
-						pkgs.pnpm
-						pkgs.awscli2
-						pkgs.git
-						pkgs.mongosh
-						pkgs.typescript-language-server
+            pkgs.pnpm
+            pkgs.awscli2
+            pkgs.git
+            pkgs.mongosh
+            pkgs.typescript-language-server
           ];
 
           shellHook = ''
