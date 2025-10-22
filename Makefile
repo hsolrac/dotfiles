@@ -1,4 +1,4 @@
-DOTFILES_DIR = $(HOME)/dotfiles
+DOTFILES_DIR = $(HOME)/.dotfiles
 PACKAGES = $(shell cat $(DOTFILES_DIR)/packages.txt)
 
 yay:
@@ -12,9 +12,9 @@ packages: install-yay
 	yay -S $(PACKAGES) --noconfirm
 
 copy-dotfiles:
-	cp -r $(DOTFILES_DIR)/config/kitty $(HOME)/.config/kitty || true
-	cp -r $(DOTFILES_DIR)/config/nvim $(HOME)/.config/nvim || true
-	cp -r $(DOTFILES_DIR)/config/i3 $(HOME)/.config/i3 || true
+	cp -r $(DOTFILES_DIR)/.config/kitty $(HOME)/.config/kitty || true
+	cp -r $(DOTFILES_DIR)/.config/nvim $(HOME)/.config/nvim || true
+	cp -r $(DOTFILES_DIR)/.config/i3 $(HOME)/.config/i3 || true
 
 i3:
 	yay -Syu i3 i3status i3block -y
