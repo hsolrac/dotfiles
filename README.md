@@ -9,7 +9,8 @@ This repository contains my personal configuration files (dotfiles) to customize
 - **Neovim**: Text editor
 - **nvim-cmp**: Autocompletion plugin for Neovim
 - **Tmux**: Terminal multiplexer for session management
-- **NixOS**
+- **Manjaro** or **Ubuntu**: Linux distribution
+
 ## Included Configurations
 
 - **i3wm**: Layout settings, keyboard shortcuts, and appearance.

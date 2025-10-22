@@ -33,12 +33,13 @@ Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
 
 call plug#end()
 
 colorscheme gruvbox
 
-nmap <C-l> :NvimTreeFindFileToggle<CR>
+nmap <leader>e :NvimTreeFindFileToggle<CR>
 
 let g:NERDTreeIgnore = ['^node_modules$']
 
@@ -57,7 +58,7 @@ let g:coc_global_extensions = [
 let g:mkdp_auto_start = 1
 
 "commmand open vim config 
-nmap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
+nmap <leader>cf :vsplit ~/.config/nvim/init.vim<cr>
 nmap <leader>cr :CocRestart
 
 " GoTo code navigation
@@ -92,11 +93,10 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 " Remap find files
-nmap <C-p> :Files <CR>
+nmap <leader>ff :Files <CR>
 nmap <C-s> :w!<CR>
 nmap <C-q> :bd<CR>
 nmap <C-f> :Rg<cr>
-nmap <C-r> :vsplit<CR>
 nmap <S-h> :bprev<CR>
 nmap <S-l> :bnext<CR>
 nmap <leader>g :GFiles?<CR>
@@ -119,10 +119,7 @@ function! s:show_documentation()
 endfunction
 
 
-" Use a tecla Tab para ativar o preenchimento automático
 inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<Tab>"
-
-" Use Shift + Tab para navegar para trás no menu pop-up
 inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 " --------------------------------------------------------
 
@@ -140,27 +137,6 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
-
-
-nnoremap % :call CreateNewFile()<CR>
-nnoremap <leader>d :call CreateNewDirectory()<CR>
-
-function! CreateNewFile()
-  let l:filename = input('Filename: ')
-  if !empty(l:filename)
-    execute 'edit' l:filename
-  endif
-endfunction
-
-function! CreateNewDirectory()
-  let l:dirname = input('Directory name: ')
-  if !empty(l:dirname)
-    call mkdir(l:dirname, "p")
-    echo 'Diretório criado: ' . l:dirname
-  endif
 endfunction
 
 lua << EOF
@@ -199,15 +175,15 @@ require('lualine').setup {
 }
 require("bufferline").setup {
   options = {
-    mode = "buffers", -- pode ser "tabs" também
-    numbers = "ordinal", -- ou "buffer_id", ou "both"
-    close_command = "bdelete! %d", -- comando para fechar buffer
+    mode = "buffers",
+    numbers = "ordinal",
+    close_command = "bdelete! %d",
     right_mouse_command = "bdelete! %d",
-    left_mouse_command = "buffer %d", -- como o clique esquerdo age
+    left_mouse_command = "buffer %d",
     middle_mouse_command = nil,
 
     indicator = {
-      icon = '▎', -- ícone ao lado do buffer ativo
+      icon = '▎',
       style = 'icon',
     },
 
@@ -239,13 +215,13 @@ require("bufferline").setup {
       }
     },
 
-    show_buffer_icons = true, -- ícones no buffer
+    show_buffer_icons = true,
     show_buffer_close_icons = true,
     show_close_icon = true,
     show_tab_indicators = true,
-    persist_buffer_sort = true, -- mantém a ordenação entre sessões
+    persist_buffer_sort = true,
 
-    separator_style = "slant", -- estilos: "slant" | "thick" | "thin" | {"", ""}
+    separator_style = "slant",
     enforce_regular_tabs = false,
     always_show_bufferline = true,
   }
