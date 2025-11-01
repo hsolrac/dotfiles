@@ -15,6 +15,8 @@
     127.0.0.1 local.locavibe.com.br
   '';
 
+	virtualisation.vmware.host.enable = true; 
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   time.timeZone = "America/Sao_Paulo";
@@ -81,7 +83,7 @@
   programs.fish.enable = true;
 
   nixpkgs.config.permittedInsecurePackages = [
-     "beekeeper-studio-5.1.5"
+     "beekeeper-studio-5.3.4"
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -120,6 +122,7 @@
     gnumake
     docker 
     docker-compose
+		beekeeper-studio
   ];
 
   services.openssh.enable = true;

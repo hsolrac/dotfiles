@@ -1,7 +1,7 @@
 let mapleader = " "
 set autoindent
 set clipboard+=unnamedplus
-set ai ma si ts=2 sw=2
+set ai ma si
 set undofile
 set number
 set completeopt=longest,menuone
@@ -11,6 +11,11 @@ set encoding=utf-8
 set fileencoding=utf-8
 set foldmethod=expr         
 set foldlevelstart=99
+
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
 
 filetype plugin indent on
 
@@ -59,7 +64,7 @@ let g:mkdp_auto_start = 1
 
 "commmand open vim config 
 nmap <leader>cf :vsplit ~/.config/nvim/init.vim<cr>
-nmap <leader>cr :CocRestart
+nmap <leader>cr :CocRestart<cr>
 
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
